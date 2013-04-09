@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var webassemble = require('../lib/webassemble'),
+    optimist = require('optimist')
+        .usage('Usage: webassemble <input> <output> [options]\n\n' + 
+            'Because webmake only supports relative paths and outer packages paths, the input files path must be resolvable ' +
+            ' assuming using it as require parameter in output file.', {
+            returnContentOnly: {
+                boolean: true,
+                description: 'Only return the content of the preprocess file.'
+            },
+            preProcessOnly: {
+                boolean: true,
+                description: 'Only produce the preprocess file without calling webmake.'
+            },
+            name: {
+                string: true,
+                description: 'For webmake.  Expose program in your namespace with given name.'
+            },
+            amd: {
+                boolean: true,
+                description: 'For webmake.  Expose bundle as AMD module.'
+            },
+            sourcemap: {
+                boolean: true,
+                description: 'For webmake.  Include source maps.'
+            },
+            include: {
+                string: true,
+                description: 'For webmake.  Additional module(s) that should be included (and are ' +
+                    'not picked by the parser).'
+            },
+            help: {
+                boolean: true,
+                desription: 'Show this usage.'
+            }
+        })
+        .alias('r', 'returnContentOnly')
+        .alias('p', 'preProcessOnly')
+        .alias('n', 'name')
+        .alias('a', 'amd')
+        .alias('s', 'sourcemap')
+        .alias('i', 'include')
+        .demand(2),
+    argv = optimist.argv;
+
+if (argv.help) {
+    console.log(optimist.help());
+    process.exit(0);
+}
+
+var files,
+    output,
+    options = {
+        name: argv.name,
+        amd: argv.amd,
+        sourcemap: argv.sourcemap
+    };
+if (argv.include) {
+    options.include = [].concat(argv.include);
+}
+
+files = argv._;
+output = files.pop();
+
+webassemble(files, output, options);
