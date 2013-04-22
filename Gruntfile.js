@@ -30,6 +30,27 @@ module.exports = function (grunt) {
             tests: ['test/output/*']
         },
 
+        // Configuration to be run (and then tested).
+        webassemble: {
+            realUsage: {
+                options: {
+                    name: 'wa'
+                },
+                files: [
+                    {src: ['test/src/date-util.js', 'test/src/string-util.js'], dest: 'test/output/gruntRealUsage.js'}
+                ]
+            },
+            fullSample: {
+                options: {
+                    amd: true,
+                    name: 'full'
+                },
+                files: [
+                    {src: ['test/src/module_exports_*.js'], dest: 'test/output/gruntFullSample.js'}
+                ]
+            }
+        },
+
         // Unit tests.
         nodeunit: {
             all: ['test/*_test.js']
@@ -46,7 +67,7 @@ module.exports = function (grunt) {
 
     // Whenever the "test" task is run, first clean the "output" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'nodeunit']);
+    grunt.registerTask('test', ['clean', 'webassemble', 'nodeunit']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);

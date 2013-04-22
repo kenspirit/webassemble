@@ -3,6 +3,7 @@
 'use strict';
 
 var webassemble = require('../lib/webassemble'),
+    count     = require('es5-ext/lib/Object/count'),
     optimist = require('optimist')
         .usage('Usage: webassemble <input> <output> [options]\n\n' + 
             'Because webmake only supports relative paths and outer packages paths, the input files path must be resolvable ' +
@@ -65,4 +66,11 @@ if (argv.include) {
 files = argv._;
 output = files.pop();
 
-webassemble(files, output, options);
+var time = Date.now();
+webassemble(files, output, options).end(function (parser) {
+        time = Date.now() - time;
+        console.log('Done [' + parser.modulesFiles.length + ' modules from ' +
+            count(parser.packages) + ' packages in ' + (time / 1000).toFixed(2) +
+            's]');
+        console.log('File ' + output + ' created.');
+    });

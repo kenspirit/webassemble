@@ -1,7 +1,7 @@
 {
   "name": "webassemble",
   "description": "Utilize modules-webmake to auto bundle all CommonJS/Node.js pacckages for web browser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/kenspirit/webassemble",
   "author": {
     "name": "Ken Chen",

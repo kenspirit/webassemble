@@ -92,16 +92,27 @@ Only return the preprocess file content without
 
 Only write the preprocess file content without calling webmake
 
-### Call programmatically:
+If no destFile is provided or returnContentOnly is set to be true, the preprocess file content will be returned.  
+
+### Call programmatically:  
+
+As it returns a [Promise][] object, `end()` must be called to end the promise chain.
 
 ```javascript
-webassemble(srcFiles, destFile[, options]);
+webassemble(srcFiles, destFile[, options]).end();
 ```
 
-If no destFile is provided or returnContentOnly is set to be true, the preprocess file content will be returned.
+### Grunt task:  
+
+Please check _Gruntfile.js_ for sample usage.  
+
+#### Limitation:  
+
+The webassemble grunt task can only support one destination file per target.  But you can define multiple targets as a workaround.  
 
 ## Tests [![Build Status](https://secure.travis-ci.org/kenspirit/webassemble.png?branch=master)](https://secure.travis-ci.org/kenspirit/webassemble)
 
     $ npm test
 
 [Webmake]: https://github.com/medikoo/modules-webmake
+[Promise]: https://github.com/medikoo/deferred
