@@ -1,7 +1,7 @@
 {
   "name": "webassemble",
   "description": "Utilize modules-webmake to auto bundle all CommonJS/Node.js pacckages for web browser",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/kenspirit/webassemble",
   "author": {
     "name": "Ken Chen",
@@ -57,6 +57,7 @@
     "bundle",
     "build",
     "modules",
-    "packages"
+    "packages",
+    "gruntplugin"
   ]
 }
