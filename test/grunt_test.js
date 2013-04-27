@@ -47,5 +47,16 @@ exports.webassemble = {
         test.ok(content.length > 0, 'gruntFullSample.js should be generated correctly.');        
 
         test.done();
+    },
+    sameFolder: function (test) {
+        test.expect(2);
+
+        var expected = grunt.file.exists('test/src/sameOutputFolder.js');
+        test.equal(expected, true, 'sameOutputFolder.js should be generated.');
+
+        var content = grunt.file.read('test/src/sameOutputFolder.js');
+        test.ok(content.length > 0, 'sameOutputFolder.js should be generated correctly.');
+
+        test.done();
     }
 };

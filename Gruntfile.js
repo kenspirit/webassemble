@@ -48,7 +48,14 @@ module.exports = function (grunt) {
                 files: [
                     {src: ['test/src/module_exports_*.js'], dest: 'test/output/gruntFullSample.js'}
                 ]
-            }
+            },
+            sameOutputFolder: {
+                options: {
+                },
+                files: [
+                    {src: ['test/src/date-util.js', 'test/src/string-util.js'], dest: 'test/src/sameOutputFolder.js'}
+                ]
+            },
         },
 
         // Unit tests.
