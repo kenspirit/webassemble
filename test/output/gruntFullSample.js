@@ -77,6 +77,9 @@ define("full", function () { return (function (modules) {
 		"test": {
 			"output": {
 				"gruntFullSample-pre.js": function (exports, module, require) {
+					// ----- Exports from test/src/constants.js -----
+					exports.CONSTANTS = require('../src/constants.js');
+
 					// ----- Exports from test/src/module_exports_abc.js -----
 					exports.funA = require('../src/module_exports_abc.js').funA;
 					exports.funB = require('../src/module_exports_abc.js').funB;
@@ -96,6 +99,14 @@ define("full", function () { return (function (modules) {
 				}
 			},
 			"src": {
+				"constants.js": function (exports, module, require) {
+					var CONSTANTS = {
+					    DATE_FORMAT: 'YYYY/MM/DD',
+					    DATETIME_FORMAT: 'YYYY/MM/DDTHH:mm:ss.SSSZ'
+					};
+
+					exports = CONSTANTS;
+				},
 				"fn_wrap.js": function (exports, module, require) {
 					'use strict';
 

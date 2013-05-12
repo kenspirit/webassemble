@@ -44,7 +44,7 @@ exports.webassemble = {
         test.equal(expected, true, 'gruntFullSample.js should be generated.');
 
         var content = grunt.file.read('test/output/gruntFullSample.js');
-        test.ok(content.length > 0, 'gruntFullSample.js should be generated correctly.');        
+        test.ok(content.length > 0, 'gruntFullSample.js should be generated correctly.');
 
         test.done();
     },

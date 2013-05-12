@@ -1,7 +1,8 @@
 'use strict';
 
 var webassemble = require('../lib/webassemble'),
-    DateUtil = require('./src/date-util').DateUtil;
+    DateUtil = require('./src/date-util').DateUtil,
+    CONSTANTS = require('./src/constants');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -39,9 +40,9 @@ exports.webassemble = {
         test.done();
     },
     fullSample: function (test) {
-        test.expect(7);
+        test.expect(8);
 
-        webassemble(['test/src/module_exports_abc.js', 'test/src/module_exports_d.js',
+        webassemble(['test/src/constants.js', 'test/src/module_exports_abc.js', 'test/src/module_exports_d.js',
             'test/src/module_exports_e.js', 'test/src/module_exports_f.js',
             'test/src/module_exports_g.js'], 'test/output/fullSample.js', {preProcessOnly: true});
 
@@ -53,6 +54,7 @@ exports.webassemble = {
         test.equal(exported.funE(), 'E', 'funE' + this.MSG);
         test.equal(exported.funF(), 'F', 'funF' + this.MSG);
         test.equal(exported.funG(), 'G', 'funG' + this.MSG);
+        test.equal(exported.CONSTANTS.DATE_FORMAT, CONSTANTS.DATE_FORMAT, 'CONSTANTS' + this.MSG);
         test.done();
     }
 };

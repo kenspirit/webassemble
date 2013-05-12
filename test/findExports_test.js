@@ -46,6 +46,14 @@ exports.findExports = {
 
         test.done();
     },
+    constants: function (test) {
+        test.expect(1);
+
+        var exports = findExports(grunt.file.read('test/src/constants.js'));
+        test.ok(exports.CONSTANTS === false, 'Constants' + this.ERR_MSG_NOT_AS_PROPERTY);
+
+        test.done();
+    },
     module_exports_abc: function (test) {
         test.expect(3);
 
@@ -60,7 +68,7 @@ exports.findExports = {
         test.expect(1);
 
         var exports = findExports(grunt.file.read('test/src/module_exports_d.js'));
-        test.ok(!exports.funD, 'funD' + this.ERR_MSG_NOT_AS_PROPERTY);
+        test.ok(exports.funD === false, 'funD' + this.ERR_MSG_NOT_AS_PROPERTY);
 
         test.done();
     },
@@ -68,7 +76,7 @@ exports.findExports = {
         test.expect(1);
 
         var exports = findExports(grunt.file.read('test/src/module_exports_e.js'));
-        test.ok(!exports.funE, 'funE' + this.ERR_MSG_NOT_AS_PROPERTY);
+        test.ok(exports.funE === false, 'funE' + this.ERR_MSG_NOT_AS_PROPERTY);
 
         test.done();
     },
@@ -76,7 +84,7 @@ exports.findExports = {
         test.expect(1);
 
         var exports = findExports(grunt.file.read('test/src/module_exports_f.js'));
-        test.ok(!exports.funF, 'funF' + this.ERR_MSG_NOT_AS_PROPERTY);
+        test.ok(exports.funF === false, 'funF' + this.ERR_MSG_NOT_AS_PROPERTY);
 
         test.done();
     },
@@ -84,7 +92,7 @@ exports.findExports = {
         test.expect(1);
 
         var exports = findExports(grunt.file.read('test/src/module_exports_g.js'));
-        test.ok(!exports.funG, 'funG' + this.ERR_MSG_NOT_AS_PROPERTY);
+        test.ok(exports.funG === false, 'funG' + this.ERR_MSG_NOT_AS_PROPERTY);
 
         test.done();
     }

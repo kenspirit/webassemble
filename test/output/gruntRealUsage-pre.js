@@ -1,3 +1,6 @@
+// ----- Exports from test/src/constants.js -----
+exports.CONSTANTS = require('../src/constants.js');
+
 // ----- Exports from test/src/date-util.js -----
 exports.DateUtil = require('../src/date-util.js').DateUtil;
 

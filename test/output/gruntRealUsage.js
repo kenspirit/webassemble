@@ -77,6 +77,9 @@ window.wa = (function (modules) {
 		"test": {
 			"output": {
 				"gruntRealUsage-pre.js": function (exports, module, require) {
+					// ----- Exports from test/src/constants.js -----
+					exports.CONSTANTS = require('../src/constants.js');
+
 					// ----- Exports from test/src/date-util.js -----
 					exports.DateUtil = require('../src/date-util.js').DateUtil;
 
@@ -85,6 +88,14 @@ window.wa = (function (modules) {
 				}
 			},
 			"src": {
+				"constants.js": function (exports, module, require) {
+					var CONSTANTS = {
+					    DATE_FORMAT: 'YYYY/MM/DD',
+					    DATETIME_FORMAT: 'YYYY/MM/DDTHH:mm:ss.SSSZ'
+					};
+
+					exports = CONSTANTS;
+				},
 				"date-util.js": function (exports, module, require) {
 					'use strict';
 

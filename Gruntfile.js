@@ -18,6 +18,7 @@ module.exports = function (grunt) {
                 'tasks/*.js',
                 'lib/*.js',
                 'test/src/*.js',
+                '!test/src/sameOutputFolder*.js',
                 '<%= nodeunit.all %>'
             ],
             options: {
@@ -37,7 +38,7 @@ module.exports = function (grunt) {
                     name: 'wa'
                 },
                 files: [
-                    {src: ['test/src/date-util.js', 'test/src/string-util.js'], dest: 'test/output/gruntRealUsage.js'}
+                    {src: ['test/src/constants.js', 'test/src/date-util.js', 'test/src/string-util.js'], dest: 'test/output/gruntRealUsage.js'}
                 ]
             },
             fullSample: {
@@ -46,7 +47,7 @@ module.exports = function (grunt) {
                     name: 'full'
                 },
                 files: [
-                    {src: ['test/src/module_exports_*.js'], dest: 'test/output/gruntFullSample.js'}
+                    {src: ['test/src/constants.js', 'test/src/module_exports_*.js'], dest: 'test/output/gruntFullSample.js'}
                 ]
             },
             sameOutputFolder: {
@@ -55,7 +56,7 @@ module.exports = function (grunt) {
                 files: [
                     {src: ['test/src/date-util.js', 'test/src/string-util.js'], dest: 'test/src/sameOutputFolder.js'}
                 ]
-            },
+            }
         },
 
         // Unit tests.

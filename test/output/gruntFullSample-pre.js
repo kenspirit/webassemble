@@ -1,3 +1,6 @@
+// ----- Exports from test/src/constants.js -----
+exports.CONSTANTS = require('../src/constants.js');
+
 // ----- Exports from test/src/module_exports_abc.js -----
 exports.funA = require('../src/module_exports_abc.js').funA;
 exports.funB = require('../src/module_exports_abc.js').funB;

@@ -20,7 +20,7 @@ module.exports = function (grunt) {
         var done = this.async();
         var time = Date.now();
         this.files.map(function (f) {
-            webassemble(f.src, f.dest, options).end(function(parser) {
+            webassemble(f.src, f.dest, options).end(function (parser) {
                 // Assemble bundles
                 time = Date.now() - time;
                 console.log('Done [' + parser.modulesFiles.length + ' modules from ' +
