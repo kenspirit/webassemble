@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var esprima = require('esprima'),
+    fs = require('fs'),
+    util = require('util'),
+    optimist = require('optimist')
+        .usage('Usage: syntaxTree <input> <output>\n\n' + 
+            'Simply gets syntaxTree of provided input file for easier debugging.', {
+            help: {
+                boolean: true,
+                desription: 'Show this usage.'
+            }
+        })
+        .demand(1),
+    argv = optimist.argv;
+
+if (argv.help) {
+    console.log(optimist.help());
+    process.exit(0);
+}
+
+var files = argv._;
+
+var code = esprima.parse(fs.readFileSync(files[0]));
+code = util.inspect(code, false, null, files.length === 1);
+if (files.length === 1) {
+    console.log(code);
+} else {
+    fs.writeFileSync(files[1], code);
+}
