@@ -106,10 +106,6 @@ webassemble(srcFiles, destFile[, options]).end();
 
 Please check _Gruntfile.js_ for sample usage.  
 
-#### Limitation:  
-
-The webassemble grunt task can only support one destination file per target.  But you can define multiple targets as a workaround.  
-
 ## Tests [![Build Status](https://secure.travis-ci.org/kenspirit/webassemble.png?branch=master)](https://secure.travis-ci.org/kenspirit/webassemble)
 
     $ npm test
