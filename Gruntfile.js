@@ -54,7 +54,17 @@ module.exports = function (grunt) {
                 options: {
                 },
                 files: [
-                    {src: ['test/src/date-util.js', 'test/src/string-util.js'], dest: 'test/src/sameOutputFolder.js'}
+                    {src: ['test/src/date-util.js', 'test/src/string-util.js'], dest: 'test/src/sameOutputFolder.js'},
+                    {src: ['test/src/date-util.js', 'test/src/string-util.js'], dest: 'test/output/multipleGruntFiles.js'}
+                ]
+            },
+            dynamicRequire: {
+                options: {
+                    ignoreErrors: true,
+                    include: 'test/src/constants.js'
+                },
+                files: [
+                    {src: ['test/src/dynamicRequire.js'], dest: 'test/output/dynamicRequire.js'}
                 ]
             }
         },

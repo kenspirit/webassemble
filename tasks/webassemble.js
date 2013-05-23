@@ -18,17 +18,23 @@ module.exports = function (grunt) {
 
         // Iterate over all specified file groups.
         var done = this.async();
-        var time = Date.now();
-        this.files.map(function (f) {
+        var iterator = function (f, cb) {
+            var time = Date.now();
+
             webassemble(f.src, f.dest, options).end(function (parser) {
                 // Assemble bundles
                 time = Date.now() - time;
-                console.log('Done [' + parser.modulesFiles.length + ' modules from ' +
+                grunt.log.ok('Done [' + parser.modulesFiles.length + ' modules from ' +
                     count(parser.packages) + ' packages in ' + (time / 1000).toFixed(2) +
                     's]');
-                console.log('File ' + f.dest + ' created.');
-                done();
+                grunt.log.ok('File ' + f.dest + ' created.');
+
+                cb();
             });
+        };
+
+        grunt.util.async.forEach(this.files, iterator, function (err) {
+            done(err ? false : true);
         });
     });
 };
