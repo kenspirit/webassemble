@@ -3,7 +3,7 @@
 'use strict';
 
 var webassemble = require('../lib/webassemble'),
-    count     = require('es5-ext/lib/Object/count'),
+    count     = require('es5-ext/object/count'),
     optimist = require('optimist')
         .usage('Usage: webassemble <input> <output> [options]\n\n' + 
             'Because webmake only supports relative paths and outer packages paths, the input files path must be resolvable ' +

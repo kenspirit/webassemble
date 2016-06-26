@@ -10,7 +10,7 @@
 
 module.exports = function (grunt) {
     var webassemble = require('../lib/webassemble'),
-        count       = require('es5-ext/lib/Object/count');
+        count       = require('es5-ext/object/count');
 
     grunt.registerMultiTask('webassemble', 'Assemble module files', function () {
         // Merge task-specific and/or target-specific options with these defaults.
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         var iterator = function (f, cb) {
             var time = Date.now();
 
-            webassemble(f.src, f.dest, options).end(function (parser) {
+            webassemble(f.src, f.dest, options).then(function (parser) {
                 // Assemble bundles
                 time = Date.now() - time;
                 grunt.log.ok('Done [' + parser.modulesFiles.length + ' modules from ' +
